@@ -681,7 +681,7 @@ public class CourseUnitVideoFragment extends CourseUnitFragment
         }
     }
 
-    private void initTranscriptListView() {
+    protected void initTranscriptListView() {
         transcriptAdapter = new TranscriptAdapter(getContext(), environment);
         transcriptListView.setAdapter(transcriptAdapter);
         transcriptListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
