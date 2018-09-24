@@ -74,15 +74,14 @@ public class CourseUnitPagerAdapter extends FragmentStatePagerAdapter {
         }
 
         CourseUnitFragment unitFragment;
+        Boolean youtubeVideo = (unit instanceof VideoBlockModel && ((VideoBlockModel) unit).getData().encodedVideos.getYoutubeVideoInfo() != null);
         //FIXME - for the video, let's ignore studentViewMultiDevice for now
         if (isCourseUnitVideo(minifiedUnit)) {
             unitFragment = CourseUnitVideoFragment.newInstance((VideoBlockModel) minifiedUnit, (pos < unitList.size()), (pos > 0));
-        } else if (minifiedUnit instanceof VideoBlockModel && ((VideoBlockModel) minifiedUnit).getData().encodedVideos.getYoutubeVideoInfo() != null) {
-            if (config.getYoutubeConfig().isYoutubeEnabled()) {
-                unitFragment = CourseUnitYoutubeVideoFragment.newInstance((VideoBlockModel) minifiedUnit, (pos < unitList.size()), (pos > 0));
-            } else {
-                unitFragment = CourseUnitOnlyOnYoutubeFragment.newInstance(minifiedUnit);
-            }
+        } else if (youtubeVideo && config.getYoutubeConfig().isYoutubeEnabled()) {
+            unitFragment = CourseUnitYoutubeVideoFragment.newInstance((VideoBlockModel) minifiedUnit, (pos < unitList.size()), (pos > 0));
+        } else if (youtubeVideo) {
+            unitFragment = CourseUnitOnlyOnYoutubeFragment.newInstance(minifiedUnit);
         } else if (config.isDiscussionsEnabled() && minifiedUnit instanceof DiscussionBlockModel) {
             unitFragment = CourseUnitDiscussionFragment.newInstance(minifiedUnit, courseData);
         } else if (!minifiedUnit.isMultiDevice()) {
