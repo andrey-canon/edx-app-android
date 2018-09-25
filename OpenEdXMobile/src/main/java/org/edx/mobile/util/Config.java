@@ -840,7 +840,7 @@ public class Config {
     }
 
     @NonNull
-    public EmbeddedYoutubeConfig getYoutubeConfig() {
+    public EmbeddedYoutubeConfig getEmbeddedYoutubeConfig() {
         return getObjectOrNewInstance(YOUTUBE_VIDEO, EmbeddedYoutubeConfig.class);
     }
 }
