@@ -74,7 +74,7 @@ public class CourseUnitPagerAdapter extends FragmentStatePagerAdapter {
         }
 
         CourseUnitFragment unitFragment;
-        Boolean youtubeVideo = (unit instanceof VideoBlockModel && ((VideoBlockModel) unit).getData().encodedVideos.getYoutubeVideoInfo() != null);
+        boolean youtubeVideo = (unit instanceof VideoBlockModel && ((VideoBlockModel) unit).getData().encodedVideos.getYoutubeVideoInfo() != null);
         //FIXME - for the video, let's ignore studentViewMultiDevice for now
         if (isCourseUnitVideo(minifiedUnit)) {
             unitFragment = CourseUnitVideoFragment.newInstance((VideoBlockModel) minifiedUnit, (pos < unitList.size()), (pos > 0));
