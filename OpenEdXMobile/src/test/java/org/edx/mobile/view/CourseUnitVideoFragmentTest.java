@@ -104,7 +104,7 @@ public class CourseUnitVideoFragmentTest extends UiTest {
             assertNotNull(layoutParams);
             assertThat(layoutParams).hasWidth(ViewGroup.LayoutParams.MATCH_PARENT);
             DisplayMetrics displayMetrics = resources.getDisplayMetrics();
-            int height = isLandscape ? displayMetrics.heightPixels :
+            int height = isLandscape ? displayMetrics.heightPixels : 
                     (displayMetrics.widthPixels * 9 / 16);
             assertThat(layoutParams).hasHeight(height);
         }
